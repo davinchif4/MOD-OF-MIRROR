@@ -123,9 +123,9 @@ def get_readable_message():
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
-            msg += f"ıllıllı⭐🌟 N͙A͙M͙E͙ 🌟⭐ıllıllı"
+            msg += f"ıllıllı N͙A͙M͙E͙ ıllıllı"
             msg += f"\n<code>{escape(str(download.name()))}</code>"
-            msg += f"\nıllıllı⭐🌟 S͙T͙A͙T͙U͙S͙ 🌟⭐ıllıllı"
+            msg += f"\nıllıllı S͙T͙A͙T͙U͙S͙ ıllıllı"
             msg += f"\n<i><b>{download.status()}</b></i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
