@@ -223,10 +223,10 @@ class MirrorListener:
             DbManger().rm_complete_task(self.message.link)
         msg = f"<b>✭File Name: </b><code>{escape(name)}</code>\n<b>✭File Size: </b>{size}"
         if self.isLeech:
-            msg += f'\n<b>✭Total Files: </b>{folders}'
+            msg += f'\n<b>✭🅣otal Files: </b>{folders}'
             if typ != 0:
-                msg += f'\n<b>Corrupted Files: </b>{typ}'
-            msg += f'\n<b>cc: </b>{self.tag}\n\n'
+                msg += f'\n<b>✭🅒orrupted Files: </b>{typ}'
+            msg += f'\n<b>✭🅒🅒: </b>{self.tag}\n\n'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
@@ -242,9 +242,9 @@ class MirrorListener:
         else:
             msg += f'\n\n<b>✭🅣ype: </b>{typ}'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>🅢ubFolders: </b>{folders}'
-                msg += f'\n<b>🅕iles: </b>{files}'
-            msg += f'\n\n<b>Hey </b>{self.tag} <b>Your Job is Done</b>'
+                msg += f'\n<b>✭🅢ubFolders: </b>{folders}'
+                msg += f'\n<b>✭🅕iles: </b>{files}'
+            msg += f'\n\n<b>✭🅗ey </b>{self.tag} <b>Your Job is Done</b>'
             msg += f'\n\n<b>🅕🅔  </b>'
             buttons = ButtonMaker()
             buttons.buildbutton("☁️ GD", link)
