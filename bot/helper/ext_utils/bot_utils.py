@@ -21,18 +21,18 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "⇧ 🅤ploading..."
-    STATUS_UPLOADINGTOGO = "⇧ 🅤ploading GoFile..."
-    STATUS_DOWNLOADING = "⇩ 🅓ownloading..."
-    STATUS_CLONING = "⟲ 🅒loning..."
-    STATUS_WAITING = "↟ 🅠ueued..."
-    STATUS_FAILED = "✖ 🅕ailed . Cleaning Download..."
-    STATUS_PAUSE = "Ⅱ 🅟aused..."
-    STATUS_ARCHIVING = "☰ 🅐rchiving..."
-    STATUS_EXTRACTING = "☶ 🅔xtracting..."
-    STATUS_SPLITTING = "✄ 🅢plitting..."
-    STATUS_CHECKING = "☑ 🅒heckingUp..."
-    STATUS_SEEDING = "❆ 🅢eeding..."
+    STATUS_UPLOADING = "   ⇧ 🅤ploading..."
+    STATUS_UPLOADINGTOGO = "   ⇧ 🅤ploading GoFile..."
+    STATUS_DOWNLOADING = "   ⇩ 🅓ownloading..."
+    STATUS_CLONING = "   ⟲ 🅒loning..."
+    STATUS_WAITING = "   ↟ 🅠ueued..."
+    STATUS_FAILED = "   ✖ 🅕ailed . Cleaning Download..."
+    STATUS_PAUSE = "   Ⅱ 🅟aused..."
+    STATUS_ARCHIVING = "   ☰ 🅐rchiving..."
+    STATUS_EXTRACTING = "   ☶ 🅔xtracting..."
+    STATUS_SPLITTING = "   ✄ 🅢plitting..."
+    STATUS_CHECKING = "   ☑ 🅒heckingUp..."
+    STATUS_SEEDING = "   ❆ 🅢eeding..."
     
 PROGRESS_MAX_SIZE = 100 // 9
 PROGRESS_INCOMPLETE = ['◔', '◔', '◑', '◑', '◑', '◕', '◕']    
@@ -137,7 +137,7 @@ def get_readable_message():
                 MirrorStatus.STATUS_SPLITTING,
                 MirrorStatus.STATUS_SEEDING,
             ]:
-                msg += f"\n├ {get_progress_bar_string(download)}\n {download.progress()}"
+                msg += f"\n├ {get_progress_bar_string(download)}\n<b>├🅟rogress:</b> {download.progress()}"
                 if download.status() == MirrorStatus.STATUS_CLONING:
                     msg += f"\n<b>├🅒loned:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
