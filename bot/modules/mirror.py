@@ -242,26 +242,26 @@ class MirrorListener:
         else:
             msg += f'\n\n<b>Type: </b>{typ}'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
+                msg += f'\n<b>🅢ubFolders: </b>{folders}'
+                msg += f'\n<b>🅕iles: </b>{files}'
             msg += f'\n\n<b>Hey </b>{self.tag} <b>Your Job is Done</b>'
-            msg += f'\n\n<b>🐸FE  </b>'
+            msg += f'\n\n<b>🅕🅔  </b>'
             buttons = ButtonMaker()
-            buttons.buildbutton("☁️ Drive Link", link)
+            buttons.buildbutton("☁️ 🅓rive 🅛ink", link)
             LOGGER.info(f'Done Uploading {name}')  
             if GOFILE and not self.isLeech and GOFILEBASEFOLDER is not None and GOFILETOKEN is not None and self.isGofile:
-              buttons.buildbutton("🗃 GoFile Link", gofilefoldercreatedfolderlink)
+              buttons.buildbutton("🅖o🅕ile", gofilefoldercreatedfolderlink)
             if INDEX_URL is not None:
                 url_path = rutils.quote(f'{name}')
                 share_url = f'{INDEX_URL}/{url_path}'
                 if ospath.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{name}'):
                     share_url += '/'
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("⚡ 🅘ndex 🅛ink", share_url)
                 else:
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("⚡ 🅘ndex 🅛ink", share_url)
                     if VIEW_LINK:
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
-                        buttons.buildbutton("🌐 View Link", share_urls)
+                        buttons.buildbutton("🌐 🅥iew 🅛ink", share_urls)
             sendMarkup(msg, self.bot, self.message, InlineKeyboardMarkup(buttons.build_menu(2)))
             if STICKERID != False:
               sendSticker(STICKERID, self.bot, self.message)
