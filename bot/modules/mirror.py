@@ -221,9 +221,9 @@ class MirrorListener:
     def onUploadComplete(self, link: str, size, files, folders, typ, name: str):
         if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
             DbManger().rm_complete_task(self.message.link)
-        msg = f"<b>✭🅕ile Name: </b><code>{escape(name)}</code>\n<b>✭🅕ile Size: </b>{size}"
+        msg = f"<b>✭File Name: </b><code>{escape(name)}</code>\n<b>✭File Size: </b>{size}"
         if self.isLeech:
-            msg += f'\n<b>✭🅣otal Files: </b>{folders}'
+            msg += f'\n<b>✭Total Files: </b>{folders}'
             if typ != 0:
                 msg += f'\n<b>Corrupted Files: </b>{typ}'
             msg += f'\n<b>cc: </b>{self.tag}\n\n'
@@ -247,21 +247,21 @@ class MirrorListener:
             msg += f'\n\n<b>Hey </b>{self.tag} <b>Your Job is Done</b>'
             msg += f'\n\n<b>🅕🅔  </b>'
             buttons = ButtonMaker()
-            buttons.buildbutton("☁️ 🅓rive 🅛ink", link)
+            buttons.buildbutton("☁️ GD", link)
             LOGGER.info(f'Done Uploading {name}')  
             if GOFILE and not self.isLeech and GOFILEBASEFOLDER is not None and GOFILETOKEN is not None and self.isGofile:
-              buttons.buildbutton("🅖o🅕ile", gofilefoldercreatedfolderlink)
+              buttons.buildbutton("GoFile", gofilefoldercreatedfolderlink)
             if INDEX_URL is not None:
                 url_path = rutils.quote(f'{name}')
                 share_url = f'{INDEX_URL}/{url_path}'
                 if ospath.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{name}'):
                     share_url += '/'
-                    buttons.buildbutton("⚡ 🅘ndex 🅛ink", share_url)
+                    buttons.buildbutton("📜 Index", share_url)
                 else:
-                    buttons.buildbutton("⚡ 🅘ndex 🅛ink", share_url)
+                    buttons.buildbutton("📜 Index", share_url)
                     if VIEW_LINK:
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
-                        buttons.buildbutton("🌐 🅥iew 🅛ink", share_urls)
+                        buttons.buildbutton("🌐 View Link", share_urls)
             sendMarkup(msg, self.bot, self.message, InlineKeyboardMarkup(buttons.build_menu(2)))
             if STICKERID != False:
               sendSticker(STICKERID, self.bot, self.message)
