@@ -158,7 +158,8 @@ def get_readable_message():
                     msg += f"\n<b>├🅛eechers:</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
-                msg += f"\n├<code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n└🅣o <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━ </b>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>├🅢ize: </b>{download.size()}"
                 msg += f"\n<b>├🅢peed: </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
