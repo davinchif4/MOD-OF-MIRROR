@@ -33,6 +33,9 @@ class MirrorStatus:
     STATUS_SPLITTING = "Splitting...✂️"
     STATUS_CHECKING = "CheckingUp...📝"
     STATUS_SEEDING = "Seeding...🌧"
+    
+PROGRESS_MAX_SIZE = 100 // 9
+PROGRESS_INCOMPLETE = ['◔', '◔', '◑', '◑', '◑', '◕', '◕']    
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -107,9 +110,12 @@ def get_progress_bar_string(status):
     p = 0 if total == 0 else round(completed * 100 / total)
     p = min(max(p, 0), 100)
     cFull = p // 8
-    p_str = '🟢' * cFull
-    p_str += '⚪' * (12 - cFull)
-    p_str = f"[{p_str}]"
+    cPart = p % 8 - 1
+    p_str = '●' * cFull
+    if cPart >= 0:
+        p_str += PROGRESS_INCOMPLETE[cPart]
+    p_str += '○' * (PROGRESS_MAX_SIZE - cFull)
+    p_str = f"「{p_str}」"
     return p_str
 
 def get_readable_message():
@@ -123,9 +129,9 @@ def get_readable_message():
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
-            msg += f"ıllıllı N͙A͙M͙E͙ ıllıllı"
+            msg += f"⭕️  NAME"
             msg += f"\n<code>{escape(str(download.name()))}</code>"
-            msg += f"\nıllıllı S͙T͙A͙T͙U͙S͙ ıllıllı"
+            msg += f"\n⭕️  STATUS"
             msg += f"\n<i><b>{download.status()}</b></i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
