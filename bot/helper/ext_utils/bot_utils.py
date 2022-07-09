@@ -129,7 +129,7 @@ def get_readable_message():
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
-            msg += f"\n\n<b>★ 🅕ile Name:</b> <code>{escape(str(download.name()))}</code>"
+            msg += f"\n\n<b>✭File Name:</b> <code>{escape(str(download.name()))}</code>"
             msg += f"\n<b>┌🅢tatus:</b> <i>{download.status()}</i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
@@ -162,11 +162,11 @@ def get_readable_message():
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>├🅢ize: </b>{download.size()}"
                 msg += f"\n<b>├🅢peed: </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
-                msg += f" | <b>├🅤ploaded: </b>{get_readable_file_size(download.torrent_info().uploaded)}"
+                msg += f"\n<b>├🅤ploaded: </b>{get_readable_file_size(download.torrent_info().uploaded)}"
                 msg += f"\n<b>├🅡atio: </b>{round(download.torrent_info().ratio, 3)}"
-                msg += f" | <b>└🅣ime: </b>{get_readable_time(download.torrent_info().seeding_time)}"
-                msg += f"\n├<code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ </b>"
+                msg += f"\n<b>├🅣ime: </b>{get_readable_time(download.torrent_info().seeding_time)}"
+                msg += f"\n└🅣o <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━ </b>"
             else:
                 msg += f"\n<b>Size: </b>{download.size()}"
             msg += "\n\n"
