@@ -21,18 +21,18 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "   ⇧ 🅤ploading..."
-    STATUS_UPLOADINGTOGO = "   ⇧ 🅤ploading GoFile..."
-    STATUS_DOWNLOADING = "   ⇩ 🅓ownloading..."
-    STATUS_CLONING = "   ⟲ 🅒loning..."
-    STATUS_WAITING = "   ↟ 🅠ueued..."
-    STATUS_FAILED = "   ✖ 🅕ailed . Cleaning Download..."
-    STATUS_PAUSE = "   Ⅱ 🅟aused..."
-    STATUS_ARCHIVING = "   ☰ 🅐rchiving..."
-    STATUS_EXTRACTING = "   ☶ 🅔xtracting..."
-    STATUS_SPLITTING = "   ✄ 🅢plitting..."
-    STATUS_CHECKING = "   ☑ 🅒heckingUp..."
-    STATUS_SEEDING = "   ❆ 🅢eeding..."
+    STATUS_UPLOADING = "   🅤ploading...⇧"
+    STATUS_UPLOADINGTOGO = "    🅤ploading GoFile...⇧"
+    STATUS_DOWNLOADING = "    🅓ownloading...⇩"
+    STATUS_CLONING = "    🅒loning...⟲"
+    STATUS_WAITING = "    🅠ueued...↟"
+    STATUS_FAILED = "    🅕ailed . Cleaning Download...✖"
+    STATUS_PAUSE = "    🅟aused...Ⅱ"
+    STATUS_ARCHIVING = "    🅐rchiving...☰"
+    STATUS_EXTRACTING = "    🅔xtracting...☶"
+    STATUS_SPLITTING = "    🅢plitting...✄"
+    STATUS_CHECKING = "    🅒heckingUp...☑"
+    STATUS_SEEDING = "    🅢eeding...❆"
     
 PROGRESS_MAX_SIZE = 100 // 9
 PROGRESS_INCOMPLETE = ['◔', '◔', '◑', '◑', '◑', '◕', '◕']    
@@ -145,7 +145,8 @@ def get_readable_message():
                 elif download.status() == MirrorStatus.STATUS_UPLOADINGTOGO:
                     msg += f"\n<b>├🅤ploaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"    
                 else:
-                    msg += f"\n<b>├🅓ownloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>├🅓ownloaded:</b> {get_readable_file_size(download.processed_bytes())}"
+                    msg += f"\n<b>├🅣otal size:</b> {download.size()}"
                 msg += f"\n<b>├🅢peed:</b> {download.speed()}"
                 msg += f"\n<b>├🅔TA:</b> {download.eta()}"
                 try:
@@ -159,7 +160,7 @@ def get_readable_message():
                 except:
                     pass
                 msg += f"\n└🅣o <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━ </b>"
+                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━ </b>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>├🅢ize: </b>{download.size()}"
                 msg += f"\n<b>├🅢peed: </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
@@ -167,7 +168,7 @@ def get_readable_message():
                 msg += f"\n<b>├🅡atio: </b>{round(download.torrent_info().ratio, 3)}"
                 msg += f"\n<b>├🅣ime: </b>{get_readable_time(download.torrent_info().seeding_time)}"
                 msg += f"\n└🅣o <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━ </b>"
+                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━ </b>"
             else:
                 msg += f"\n<b>Size: </b>{download.size()}"
             msg += "\n\n"
