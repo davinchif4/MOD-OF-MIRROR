@@ -21,18 +21,18 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "   🅤ploading...⇧"
-    STATUS_UPLOADINGTOGO = "    🅤ploading GoFile...⇧"
-    STATUS_DOWNLOADING = "    🅓ownloading...⇩"
-    STATUS_CLONING = "    🅒loning...⟲"
-    STATUS_WAITING = "    🅠ueued...↟"
-    STATUS_FAILED = "    🅕ailed . Cleaning Download...✖"
-    STATUS_PAUSE = "    🅟aused...Ⅱ"
-    STATUS_ARCHIVING = "    🅐rchiving...☰"
-    STATUS_EXTRACTING = "    🅔xtracting...☶"
-    STATUS_SPLITTING = "    🅢plitting...✄"
-    STATUS_CHECKING = "    🅒heckingUp...☑"
-    STATUS_SEEDING = "    🅢eeding...❆"
+    STATUS_UPLOADING = "   Uploading...⇧⇧"
+    STATUS_UPLOADINGTOGO = "    Uploading GoFile...⇧⇧"
+    STATUS_DOWNLOADING = "    Downloading...⇩⇩"
+    STATUS_CLONING = "    Cloning...⟲⟲"
+    STATUS_WAITING = "    Queued...↟↟"
+    STATUS_FAILED = "    Failed . Cleaning Download...✖"
+    STATUS_PAUSE = "    Paused...Ⅱ"
+    STATUS_ARCHIVING = "    Archiving...☰"
+    STATUS_EXTRACTING = "    Extracting...☶"
+    STATUS_SPLITTING = "    Splitting...✄✄"
+    STATUS_CHECKING = "    CheckingUp...☑☑"
+    STATUS_SEEDING = "    Seeding..❆❆❆"
     
 PROGRESS_MAX_SIZE = 100 // 9
 PROGRESS_INCOMPLETE = ['◔', '◔', '◑', '◑', '◑', '◕', '◕']    
