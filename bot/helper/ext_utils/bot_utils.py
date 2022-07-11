@@ -160,7 +160,7 @@ def get_readable_message():
                 except:
                     pass
                 msg += f"\n└🅣o <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━ </b>"
+                
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>├🅢ize: </b>{download.size()}"
                 msg += f"\n<b>├🅢peed: </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
@@ -168,12 +168,13 @@ def get_readable_message():
                 msg += f"\n<b>├🅡atio: </b>{round(download.torrent_info().ratio, 3)}"
                 msg += f"\n<b>├🅣ime: </b>{get_readable_time(download.torrent_info().seeding_time)}"
                 msg += f"\n└🅣o <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━ </b>"
+                
             else:
                 msg += f"\n<b>Size: </b>{download.size()}"
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
+        msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━ </b>"        
         bmsg = f"<b>CPU:</b> {cpu_percent()}% | <b>FREE:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
         bmsg += f"\n<b>RAM:</b> {virtual_memory().percent}% | <b>UPTIME:</b> {get_readable_time(time() - botStartTime)}"
         dlspeed_bytes = 0
