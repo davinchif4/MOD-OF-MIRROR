@@ -174,7 +174,7 @@ def get_readable_message():
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━ </b>"        
+        msg += f"\n\n<b> ━━━━━━━━━━━━━━━━━━━━━━ </b>"        
         bmsg = f"<b>CPU:</b> {cpu_percent()}% | <b>FREE:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
         bmsg += f"\n<b>RAM:</b> {virtual_memory().percent}% | <b>UPTIME:</b> {get_readable_time(time() - botStartTime)}"
         dlspeed_bytes = 0
